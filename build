@@ -1,0 +1,4 @@
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/Users/207112/Development/vireo/build/lib/pkgconfig
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/Users/207112/Development/vireo/build
+
+g++ `pkg-config --cflags --libs vireo` -std=c++14 -O3 -lboost_system main.cpp
