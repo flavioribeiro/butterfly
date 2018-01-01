@@ -7,13 +7,13 @@
 #include "crow_all.h"
 
 int main() {
-	crow::SimpleApp app;
+  crow::SimpleApp app;
 
-	CROW_ROUTE(app, "/")([](){
-		return "Hello w0rldzz!";
-	});
+  CROW_ROUTE(app, "/")([](){
+    return "Hello w0rldzz!";
+  });
 
-	app.port(8080).multithreaded().run();
+  app.port(8080).multithreaded().run();
 }
 
 void remux(string in, string out) {
