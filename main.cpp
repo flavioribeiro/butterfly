@@ -20,8 +20,8 @@ bool is_request_valid(const crow::request& req) {
     req.url_params.get("height") != nullptr;
 }
 
-std::ostringstream transcode(VideoChunk chunk) {
-  std::ostringstream transcoded_chunk;
+std::stringstream transcode(VideoChunk chunk) {
+  std::stringstream transcoded_chunk;
 
 //  vireo::demux::Movie movie(filename);
 //  // check https://github.com/twitter/vireo/blob/master/vireo/tools/chunk/main.cpp#L88
@@ -53,7 +53,7 @@ int main() {
       return crow::response(400);
     }
 
-    std::ostringstream os = transcode(chunk);
+    std::stringstream os = transcode(chunk);
     return crow::response{os.str()};
   });
 
