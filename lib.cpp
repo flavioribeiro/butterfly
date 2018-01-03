@@ -16,7 +16,7 @@ bool is_request_valid(const crow::request& req) {
 stringstream transcode(VideoChunk chunk) {
   stringstream transcoded_chunk;
 
-  vireo::demux::Movie movie(chunk.filename);
+//  vireo::demux::Movie movie(chunk.filename);
   transcoded_chunk << "ok" << chunk.bitrate;
   return transcoded_chunk;
 }

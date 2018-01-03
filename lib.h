@@ -13,6 +13,7 @@ struct VideoChunk {
 };
 
 bool is_request_valid(const crow::request&);
+
 stringstream transcode(VideoChunk);
 
 #endif

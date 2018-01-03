@@ -9,9 +9,9 @@ int main() {
   CROW_ROUTE(app, "/<string>")([](const crow::request& req, string filename) {
     VideoChunk chunk;
 
-//    if (!is_request_valid(req)) {
-//      return crow::response(400);
-//    }
+    if (!is_request_valid(req)) {
+      return crow::response(400);
+    }
 
     try {
       chunk = {
@@ -24,8 +24,8 @@ int main() {
       return crow::response(400);
     }
 
-    std::stringstream os = transcode(chunk);
-    return crow::response{os.str()};
+    stringstream oss = transcode(chunk); 
+    return crow::response{oss.str()};
   });
 
   app.loglevel(crow::LogLevel::Debug);
