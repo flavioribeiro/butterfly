@@ -5,15 +5,17 @@
 
 using namespace std;
 
-struct VideoChunk {
-  string filename;
-  long   bitrate;
-  short  width;
-  short  height;
+struct VideoChunkInfo {
+  string        filename;
+  long          bitrate;
+  short         width;
+  short         height;
 };
 
 bool is_request_valid(const crow::request&);
 
-stringstream transcode(VideoChunk);
+stringstream extract(VideoChunkInfo);
+
+stringstream transcode(stringstream);
 
 #endif

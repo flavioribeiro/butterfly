@@ -7,14 +7,15 @@ int main() {
   crow::SimpleApp app;
 
   CROW_ROUTE(app, "/<string>")([](const crow::request& req, string filename) {
-    VideoChunk chunk;
+    VideoChunkInfo chunk_info;
+    stringstream extracted_chunk, transcoded_chunk, test;
 
     if (!is_request_valid(req)) {
       return crow::response(400);
     }
 
     try {
-      chunk = {
+      chunk_info = {
         filename,
         boost::lexical_cast<long>(req.url_params.get("bitrate")),
         boost::lexical_cast<short>(req.url_params.get("width")),
@@ -24,8 +25,11 @@ int main() {
       return crow::response(400);
     }
 
-    stringstream oss = transcode(chunk); 
-    return crow::response{oss.str()};
+    extracted_chunk = extract(chunk_info);
+//    transcoded_chunk = transcode(extracted_chunk);
+
+//    return crow::response{transcoded_chunk.str()};
+      return crow::response{extracted_chunk.str()};
   });
 
   app.loglevel(crow::LogLevel::Debug);
