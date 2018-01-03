@@ -16,6 +16,6 @@ bool is_request_valid(const crow::request&);
 
 stringstream extract(VideoChunkInfo);
 
-stringstream transcode(stringstream);
+stringstream transcode(stringstream*);
 
 #endif

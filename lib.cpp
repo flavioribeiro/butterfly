@@ -47,7 +47,7 @@ stringstream extract(VideoChunkInfo chunk_info) {
   return chunk;
 }
 
-stringstream transcode(stringstream chunk) {
+stringstream transcode(stringstream* chunk) {
   stringstream transcoded_chunk;
   transcoded_chunk << "transcoded chunk here";
   return transcoded_chunk;
